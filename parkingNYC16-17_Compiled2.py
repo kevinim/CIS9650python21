@@ -177,7 +177,7 @@ County = new['Violation County'] = new['Violation County'].replace('MN','Manhatt
 County = new['Violation County'] = new['Violation County'].replace('Q','Queens')
 County = new['Violation County'] = new['Violation County'].replace('QN','Queens')
 County = new['Violation County'] = new['Violation County'].replace('QNS','Queens')
-County = new['Violation County'] = new['Violation County'].replace('R','Bronx') #R = bRonx = BX
+County = new['Violation County'] = new['Violation County'].replace('R','Staten Island') 
 County = new['Violation County'] = new['Violation County'].replace('ST','Staten Island')
 
 County = new.groupby(['Violation County']).count()
