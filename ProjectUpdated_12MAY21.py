@@ -382,7 +382,7 @@ another = "y"
 while another == "y":
     state = input("Please enter state abbreviation: ")
     chosen = (new[new['Registration State'] == state]).shape[0]
-    print("In the state of,", state, chosen, "tickets were distributed.")
+    print("In the state of", state, chosen, "tickets were distributed.")
     a=input("Would you like to look at another state? (y/n):")
     if a !='y':
         break
