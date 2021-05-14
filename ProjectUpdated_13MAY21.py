@@ -135,6 +135,19 @@ print('\nManhattan has issued the most tickets in the 2017 fiscal year.')
 
 ############################### Nadia ###################################
 
+counties = new.groupby(['Violation County', 'I_Month']).size().reset_index(name='count')
+counties = counties.sort_values(by = 'count',ascending = False)
+print("This line graph is displaying monthly tickets distrubition by county in NYC")
+
+#Multiple line plots displaying monthly tickets distrubition by county
+sns.set_style("whitegrid")
+plt.figure(figsize=(10,6))
+sns.lineplot(data = counties, x='I_Month',y='count' ,hue='Violation County')
+plt.ylabel('Number of tickets (whole numbers)', fontsize=16)
+plt.xlabel('Month', fontsize=16)
+plt.title("Distribution of Monthly Parking Tickets by County: \nFiscal Year 2017", fontsize=18)
+plt.show()
+
 print("\nSummary of Code Violations by year")
 print("=========================================================")
 
@@ -148,10 +161,9 @@ print(k)
 
 max_violation_codes = new['Violation Code'].value_counts().nlargest(10)
 
+#Bar chart displaying 10 most common ticket violation codes 
+print("This bar chart is displaying ten most common parking violation codes in NYC")
 sns.set(style="ticks")
-
-#Graph 1
-print("This is a bar chart showing ten most common parking violation codes in NYC")
 plt.figure(figsize=(10,6))
 sns.barplot(y=max_violation_codes.values, x=max_violation_codes.index, alpha=0.9, palette=("magma"))
 plt.tick_params(labelbottom='on')
@@ -162,8 +174,9 @@ plt.show()
     
 min_violation_codes = new['Violation Code'].value_counts().nsmallest(10)
 
-#Graph 2
-print("This is a bar chart showing ten least common parking violation codes in NYC")
+#Bar chart displaying 10 least common ticket violation codes 
+print("This bar chart is displaying ten least common parking violation codes in NYC")
+sns.set(style="ticks")
 plt.figure(figsize=(10,6))
 sns.barplot(y=min_violation_codes.values, x=min_violation_codes.index, alpha=0.9, palette=("BuGn_d"))
 plt.tick_params(labelbottom='on')
@@ -362,17 +375,6 @@ while most=='y':
     if more !='y':
         break
 
-############################ Vira's Part ############################    
-
-"""print("\nParking situation in the city by day")
-print("=================================================")
-question = input("\nEnter a date in d/m/yy format: ")
-holiday = (new[new['Issue Date'] == question]).shape[0]
-print("On this day,", holiday, "tickets were distributed.")
-if holiday > 1000:
-    print("\nDue to parking ticket distribution on this day, parking can be an issue.")
-else:
-    print("\nDue to parking ticket distribution on this day, parking should not be an issue.")"""
     
 ############################ Heather's Part ############################ 
 
